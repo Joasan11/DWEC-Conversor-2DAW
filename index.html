@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConversorTemperatura</title>
+</head>
+<body>
+    <h1>Conversor de Temperatura</h1>
+    <p>Introduce a continuación la temperatura en grados Celsius:</p>
+    <!-- Campo para agregar, con el "type", solo validamos números -->
+    <input type="number" id="tempCelsius" placeholder="Temperatura en Celsius">
+    <button onclick="convertirAFahrenheit()">Convertir a Fahrenheit</button>
+    <!-- Mensaje en rojo para cuando el campo input este vacio -->
+    <p id="errorMensaje" style="color: red;"></p>
+    <!-- Mensaje + funcion realizada de conversor, mostrando el resultado -->
+    <p>Temperatura en Fahrenheit: <span id="tempFahrenheit"></span></p>
+
+    <script>
+        //Función para convertir el campo input en Farenhait (Celsius)
+        function convertirAFahrenheit() {
+            var tempCelsius = document.getElementById("tempCelsius").value;
+            //Codigo, para mostrar el mensaje en rojo de error, si e input esta vacio
+            if (tempCelsius === "") {
+                document.getElementById("errorMensaje").innerText = "Campo vacio, porfavor introduzca un número";
+                document.getElementById("tempFahrenheit").innerText = "";
+            } else {
+                //Codigo para cuando el input es un número y no esta vacio + funcion conversor
+                document.getElementById("errorMensaje").innerText = "";
+                tempCelsius = parseFloat(tempCelsius);
+                var tempFahrenheit = (tempCelsius * 9/5) + 32;
+                document.getElementById("tempFahrenheit").innerText = tempFahrenheit.toFixed(2) + " °F";
+            }
+        }
+    </script>
+</body>
+</html>
